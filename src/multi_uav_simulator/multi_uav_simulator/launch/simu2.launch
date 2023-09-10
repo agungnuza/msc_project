@@ -1,0 +1,35 @@
+<launch>
+
+<!-- add a new line for each new drone with the incremental robot_id. -->
+  <!-- Use bigquad model for the first two instances -->
+  <param name="robot1" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=1" />
+
+  <!-- Use crazyflie model for the other three instances -->
+
+  <!-- Initial Conditions for the robots -->
+  <rosparam file="$(find multi_uav_simulator)/config/initial_conditions.yaml"/>
+
+  <param name="frame/prefix" value="/base_link"/>
+  <param name="frame/fixed" value="map"/>
+
+  <!-- specifies the frequency that the internal stabilization controller should run -->
+  <arg name="controller_frequency" default="100"/>
+
+  <!-- specifies the rosconsole log configuration file -->
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find multi_uav_simulator)/config/custom_rosconsole.conf"/>
+
+ <group ns="robot_1">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="1 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+
+
+  <!-- runs an rviz node for visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find multi_uav_simulator)/config/simulation.rviz"/>
+
+
+ 
+
+</launch>

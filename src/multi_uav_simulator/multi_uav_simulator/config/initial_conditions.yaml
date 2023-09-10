@@ -1,0 +1,37 @@
+# define the initial positions of each robot in NWU frame
+# change the initial rotation matrix to [1, 0, 0, 0, 1, 0, 0, 0, 1] for initialing the 
+# drones right side up.
+robot_1:
+  position: [2.8, 2.8, -0.5]
+  velocity: [0, 0, 0]
+  rotation: [1, 0, 0, 0, -0.9995, -0.0314, 0, 0.0314, -0.9995]
+  omega: [0, 0, 0]
+  optimizer_type: 1 #type 1: occ2sdf, type 2: octo2sdf, type 3: occ2sdfisam, type 4: octo2sdfisam
+
+robot_2:
+  position: [2.8, 2.8, -0.5]
+  velocity: [0, 0, 0]
+  rotation: [1, 0, 0, 0, -0.9995, -0.0314, 0, 0.0314, -0.9995]
+  omega: [0, 0, 0]
+  optimizer_type: 2 #type 1: occ2sdf, type 2: octo2sdf, type 3: occ2sdfisam, type 4: octo2sdfisam
+
+robot_3:
+  position: [2.8, 2.8, -0.5]
+  velocity: [0, 0, 0]
+  rotation: [1, 0, 0, 0, -0.9995, -0.0314, 0, 0.0314, -0.9995]
+  omega: [0, 0, 0]
+  optimizer_type: 3 #type 1: occ2sdf, type 2: octo2sdf, type 3: occ2sdfisam, type 4: octo2sdfisam
+
+robot_4:
+  position: [2.8, 2.8, -0.5]
+  velocity: [0, 0, 0]
+  rotation: [1, 0, 0, 0, -0.9995, -0.0314, 0, 0.0314, -0.9995]
+  omega: [0, 0, 0]
+  optimizer_type: 4 #type 1: occ2sdf, type 2: octo2sdf, type 3: occ2sdfisam, type 4: octo2sdfisam
+
+robot_5:
+  position: [4.7, 4.8, -0.5]
+  velocity: [0, 0, 0]
+  rotation: [1, 0, 0, 0, -0.9995, -0.0314, 0, 0.0314, -0.9995]
+  omega: [0, 0, 0]
+  optimizer_type: 4 #type 1: occ2sdf, type 2: octo2sdf, type 3: occ2sdfisam, type 4: octo2sdfisam
