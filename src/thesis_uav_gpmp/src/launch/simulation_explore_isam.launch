@@ -1,0 +1,43 @@
+<!-- pcltoocto.launch -->
+<launch>
+
+
+  <node pkg="thesis_uav_gpmp" type="map_generator_explore.py" name="map_gen_node" output="screen"/>
+
+  <!-- INSTANTANIATE CONTROLLER BELOW -->
+
+  <param name="robot5" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=5" />
+
+
+  <!-- Initial Conditions for the robots -->
+  <rosparam file="$(find multi_uav_simulator)/config/initial_conditions.yaml"/>
+
+  <param name="frame/prefix" value="/base_link"/>
+  <param name="frame/fixed" value="map"/>
+
+  <!-- specifies the frequency that the internal stabilization controller should run -->
+  <arg name="controller_frequency" default="100"/>
+
+  <!-- specifies the rosconsole log configuration file -->
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find multi_uav_simulator)/config/custom_rosconsole.conf"/>
+
+
+  <group ns="robot_5">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="5 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+
+  <!-- runs an rviz node for visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find multi_uav_simulator)/config/explore.rviz"/>
+
+  <!-- run send trajectory node -->
+  <node name="send_trajectory_explore" pkg="multi_uav_simulator" type="send_trajectory_explore" output="screen"/>
+
+  <!-- run explore node and use GDB -->
+  <node name="explore_isam" pkg="thesis_optimizer" type="explore_isam_node" output="screen"  /> 
+  
+</launch>
+
+

@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="occ2sdfisam" pkg="thesis_optimizer" type="occ2sdfisam_node" output="screen" /> 
+
+
+</launch>

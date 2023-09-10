@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="occ2sdf" pkg="thesis_optimizer" type="occ2sdf_node" output="screen" /> 
+
+
+</launch>

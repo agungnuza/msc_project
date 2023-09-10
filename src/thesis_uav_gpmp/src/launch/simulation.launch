@@ -1,0 +1,67 @@
+<!-- pcltoocto.launch -->
+<launch>
+
+
+  <node pkg="thesis_uav_gpmp" type="map_generator.py" name="map_gen_node" output="screen"/>
+
+  <!-- INSTANTANIATE CONTROLLER BELOW -->
+
+  <param name="robot1" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=1" />
+  <param name="robot2" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=2" />
+  <param name="robot3" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=3" />
+  <param name="robot4" command="$(find xacro)/xacro $(find multi_uav_simulator)/cf_description/crazyflie.urdf.xacro robot_id:=4" />
+
+
+  <!-- Initial Conditions for the robots -->
+  <rosparam file="$(find multi_uav_simulator)/config/initial_conditions.yaml"/>
+
+  <param name="frame/prefix" value="/base_link"/>
+  <param name="frame/fixed" value="map"/>
+
+  <!-- specifies the frequency that the internal stabilization controller should run -->
+  <arg name="controller_frequency" default="100"/>
+
+  <!-- specifies the rosconsole log configuration file -->
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find multi_uav_simulator)/config/custom_rosconsole.conf"/>
+
+  <group ns="robot_1">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="1 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+  <group ns="robot_2">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="2 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+  <group ns="robot_3">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="3 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+  <group ns="robot_4">
+    <node name="drone" pkg="multi_uav_simulator" type="multi_uav_simulator" output="screen" args="4 $(arg controller_frequency)">
+      <rosparam file="$(find multi_uav_simulator)/config/crazyflie_params.yaml"/>
+    </node>
+  </group>
+
+  <!-- runs an rviz node for visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find multi_uav_simulator)/config/simulation.rviz"/>
+
+  <!-- run send trajectory node -->
+  <node name="send_trajectory" pkg="multi_uav_simulator" type="send_trajectory" output="screen"/>
+
+  <!-- run send trajectory node -->
+  <node name="send_trajectory_robot2" pkg="multi_uav_simulator" type="send_trajectory_robot2" output="screen"/>
+
+  <!-- run send trajectory node -->
+  <node name="send_trajectory_robot3" pkg="multi_uav_simulator" type="send_trajectory_robot3" output="screen"/>
+
+  <!-- run send trajectory node -->
+  <node name="send_trajectory_robot4" pkg="multi_uav_simulator" type="send_trajectory_robot4" output="screen"/>
+
+
+</launch>
