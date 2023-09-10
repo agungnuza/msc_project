@@ -78,7 +78,7 @@ src/multi_uav_simulator/multi_uav_simulator/config/initial_conditions.yaml
 
 ## Codebase
 
-### Contributed Packages and Interfaces
+### Contributed Packages, Interfaces and Libraries
 
 - **ROS Packages**:
   - `src/thesis_optimizer`
@@ -90,6 +90,30 @@ src/multi_uav_simulator/multi_uav_simulator/config/initial_conditions.yaml
   - `src/multi_uav_simulator/multi_uav_simulator/src/send_trajectory_robot3.cpp`
   - `src/multi_uav_simulator/multi_uav_simulator/src/send_trajectory_robot4.cpp`
   - `src/multi_uav_simulator/multi_uav_simulator/src/send_trajectory.cpp`
+
+- **GPMP Libraries**:
+  - `gpmp2/planner/ISAM2TrajOptimizer-inl.h`
+  - `gpmp2/planner/ISAM2TrajOptimizer.h`
+  - `gpmp2/planner/ISAM2TrajOptimizerNew-inl.h`
+  - `gpmp2/planner/ISAM2TrajOptimizerNew.h`
+  - `gpmp2/planner/BatchTrajOptimizerNew.h`
+  - `gpmp2/planner/BatchTrajOptimizerNew.cpp`
+  - `gpmp2/planner/BatchTrajOptimizerNew-inl.h`
+  - `gpmp2/planner/BatchTrajOptimizer.h`
+  - `gpmp2/planner/BatchTrajOptimizer.cpp`
+  - `gpmp2/planner/BatchTrajOptimizer-inl.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorPR3DNew.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorPR3D.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorNew-inl.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorNew.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorGPPR3DNew.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorGPPR3D.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorGPNew.h`
+  - `gpmp2/obstacle/ObstacleSDFFactorGPNew-inl.h`
+  - `gpmp2/obstacle/ObstacleCostNew.h`
+  - `gpmp2/kinematics/PointRobot3DModel.h`
+  - `gpmp2/kinematics/PointRobot3D.h`
+  - `gpmp2/kinematics/PointRobot3D.cpp`
 
 ### Required Libraries
 
