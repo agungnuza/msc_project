@@ -1,7 +1,8 @@
 
-# UAV Simulation Repository
+# Motion Planning for UAV in 3D Dynamic Environment Using Probabilistic Inference
 
-Welcome to the UAV Simulation Repository! This README provides a guide on how to run the available simulations and navigate through the codebase.
+Welcome to the my MSc Robotics and Computation Project Repository!
+This README provides a guide on how to run the available simulations and navigate through the codebase.
 
 ## Available Simulations
 
